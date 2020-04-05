@@ -2,8 +2,8 @@
 include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 $uname= mysqli_real_escape_string($conn,$_POST["uname"]);
-$pwd = mysqli_real_escape_string($conn,$_POST["pwd"]);
-$pw = password_hash($_POST["pwd"],PASSWORD_DEFAULT);
+$pwd = mysqli_real_escape_string($conn,$_POST["pword"]);
+$pw = password_hash($_POST["pword"],PASSWORD_DEFAULT);
 $fn = mysqli_real_escape_string($conn,$_POST["fname"]);
 $ln = mysqli_real_escape_string($conn,$_POST["lname"]);
 $em =mysqli_real_escape_string($conn,$_POST["email"]);
