@@ -2,9 +2,9 @@
     
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL")) ;
     $c_s = 'us-cdbr-iron-east-01.cleardb.net';
-    $c_u = 'be3083510c3140';
-    $c_p = '716c0fad';
-    $c_db = 'heroku_d877f2ebefc84ff';
+    $c_u = 'username';
+    $c_p = 'pwd';
+    $c_db = 'heroku_database';
 
     // name of the server
     $servername = $c_s;
