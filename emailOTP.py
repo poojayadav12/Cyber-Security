@@ -17,7 +17,7 @@ server = smtplib.SMTP('smtp.gmail.com', 587)
 server.ehlo()
 server.starttls()
 #Next, log in to the server
-server.login("otpc850@gmail.com", "test@amex123")
+server.login("Email", "pwd")
 
 #Generating OTP 
 otp = random.randint(1000, 9999)
@@ -26,7 +26,7 @@ print(t)
 #Send the mail
 msg = MIMEMultipart()
 msg["Subject"] = "One time password"
-msg["From"] = "otpc850@gmail.com"
+msg["From"] = "Email
 msg["To"] = email
 
 text = """\
@@ -37,7 +37,7 @@ body = MIMEText(text, "plain")
 msg.attach(body)
 
 #sending OTP
-server.sendmail("otpc850@gmail.com", email, msg.as_string())
+server.sendmail("Email", email, msg.as_string())
 
 
 #verifying OTP
