@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             else{
                 
                 // Account details
-                $apiKey = urlencode('e6ES5mVtBvo-7MO2iYHRJTYXHSDWmvc0WmIg89JuRf');
+                $apiKey = urlencode('API-KEY');
                 
                 // Message details
                 $otp = rand(1000,9999);
@@ -70,7 +70,7 @@ else{
             echo "<script>(function(){alert('Please Enter the Card Details');})(); window.location.replace('welcome.html');</script>";
         }
         else{
-            $apiKey = urlencode('e6ES5mVtBvo-7MO2iYHRJTYXHSDWmvc0WmIg89JuRf');
+            $apiKey = urlencode('API-KEY');
                 
             // Message details
             $otp = rand(1000,9999);
