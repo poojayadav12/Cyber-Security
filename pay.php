@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['mobv']=false;
+$_SESSION['ev']=false;
 ?>
 
 <?php
