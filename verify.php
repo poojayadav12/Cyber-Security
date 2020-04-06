@@ -5,15 +5,54 @@ session_start();
 <?php
 $input = $_POST['otp'];
 $otp = $_SESSION['otp'];
-$otpn = $otp[0].$otp[1].$otp[2].$otp[3];
+
+
 $start_time = $_SESSION['start_time'];
 
-if($_SESSION["mobno"]=="null"){
+
+if($_SESSION['op']=="mobOTP" && $_SESSION['mobv']==false){
+ 
+    if(time()-$start_time<=200){
+    if($input == $otp){
+        $_SESSION['otp']=0;
+        $_SESSION['mobv']=true;
+        $_SESSION["op"]  = "eOTP";
+           $email=$_SESSION["email"];
+            if($email =="null"){
+                 echo "<script>(function(){alert('Please Enter the Card Details');})(); window.location.replace('welcome.html');</script>";
+             }
+             else{
+             $python = `python emailOTP.py $email`;
+             $_SESSION["otp"] =$python;
+             $_SESSION['start_time'] = time();
+              header('Location:verifyeOTP.html') ;
+             }
+        header('Location:verifyeOTP.html');
+    }
+    else
+    echo "<script>(function(){alert('Entered Wrong OTP');})(); window.location.replace('verifyOTP.html');</script>";
+  }
+  else
+    {
+    echo 'Session expired';
+    $_SESSION['otp']= 0;
+    echo "<script>(function(){alert('Session Experied, Please click on the Resend button');})(); window.location.replace('verifyOTP.html');</script>";
+    }
+  }
+
+else
+if($_SESSION['op']=="mobOTP" && $_SESSION['mobv']==true){
     echo "<script>(function(){alert('Please Enter the Card Details');})(); window.location.replace('welcome.html');</script>";
 }
-else{
+else {
+if($_SESSION['op']=="eOTP")
+$otpn = $otp[0].$otp[1].$otp[2].$otp[3];
 
-if(time()-$start_time<=60){
+if($_SESSION["mobno"]=="null"){
+    echo "<script>(function(){alert('Please Enter the Card Details');})(); window.location.replace('pay.html');</script>";
+}
+else{
+if(time()-$start_time<=200){
 if($input == $otpn){
     $_SESSION["mobno"] ="null";
     $_SESSION["email"] ="null";
@@ -90,13 +129,14 @@ echo '<!DOCTYPE html>
 ';
 }
 else
-echo "<script>(function(){alert('Entered Wrong OTP');})(); window.location.replace('verifyOTP.html');</script>";
+echo "<script>(function(){alert('Entered Wrong OTP');})(); window.location.replace('verifyeOTP.html');</script>";
 }
 else
 {
     echo 'Session expired';
     $_SESSION['otp']= 0;
-    echo "<script>(function(){alert('Session Experied, Please click on the Resend button');})(); window.location.replace('verifyOTP.html');</script>";
+    echo "<script>(function(){alert('Session Experied, Please click on the Resend button');})(); window.location.replace('verifyeOTP.html');</script>";
+}
 }
 }
 ?>
