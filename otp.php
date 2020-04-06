@@ -16,7 +16,7 @@ session_start();
                 $message = 'Dear User, OTP for mobile number verification is '.$otp.'. Thanks SafePay';
                 // A Twilio number you own with SMS capabilities
                  // Account details
-                 $apiKey = urlencode('e6ES5mVtBvo-7MO2iYHRJTYXHSDWmvc0WmIg89JuRf');
+                 $apiKey = urlencode('Your Api key');
                  // Message details
                 // Prepare data for POST request
                 $data = array('apikey' => $apiKey, 'numbers' => $numbers, "message" => $message);
